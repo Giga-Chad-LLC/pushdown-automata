@@ -1,0 +1,7 @@
+-- Grammar --
+Terminals: ['a', 'b']
+Non-terminals: ['S']
+Start: 'S'
+Rules:
+'S' -> ['a', 'S', 'a'] | ['b', 'S', 'b'] | ['a'] | ['b'] | ['ε']
+

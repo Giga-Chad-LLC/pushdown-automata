@@ -1,0 +1,12 @@
+-- Grammar --
+Terminals: ['(', ')']
+Non-terminals: ['A', 'B', 'C', 'S', 'lb', 'rb']
+Start: 'A'
+Rules:
+'S' -> ['lb', 'B']
+'A' -> ['lb', 'B'] | ['ε']
+'B' -> ['S', 'C'] | ['rb', 'S'] | [')']
+'C' -> ['rb', 'S'] | [')']
+'lb' -> ['(']
+'rb' -> [')']
+

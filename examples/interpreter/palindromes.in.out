@@ -1,0 +1,38 @@
+Provided Grammar:
+-- Grammar --
+Terminals: ['a', 'b']
+Non-terminals: ['str']
+Start: 'str'
+Rules:
+'str' -> ['a', 'str', 'a'] | ['b', 'str', 'b'] | ['a'] | ['b'] | ['ε']
+
+
+Grammar in Greibah weak form:
+-- Grammar --
+Terminals: ['a', 'b']
+Non-terminals: ['str', "str'"]
+Start: 'str''
+Rules:
+'str' -> ['a', 'a'] | ['a', 'str', 'a'] | ['b', 'b'] | ['b', 'str', 'b'] | ['a'] | ['b']
+'str'' -> ['ε'] | ['a', 'a'] | ['a', 'str', 'a'] | ['b', 'b'] | ['b', 'str', 'b'] | ['a'] | ['b']
+
+
+-- Evaluation --
+Grammar contains 'ababbbaba': True
+
+Evaluation trace:
+{ 'ababbbaba', ['str''] }
+{ 'ababbbaba', ['a', 'str', 'a'] }
+{ 'babbbaba', ['a', 'str'] }
+{ 'babbbaba', ['a', 'b', 'str', 'b'] }
+{ 'abbbaba', ['a', 'b', 'str'] }
+{ 'abbbaba', ['a', 'b', 'a', 'str', 'a'] }
+{ 'bbbaba', ['a', 'b', 'a', 'str'] }
+{ 'bbbaba', ['a', 'b', 'a', 'b', 'str', 'b'] }
+{ 'bbaba', ['a', 'b', 'a', 'b', 'str'] }
+{ 'bbaba', ['a', 'b', 'a', 'b', 'b'] }
+{ 'baba', ['a', 'b', 'a', 'b'] }
+{ 'aba', ['a', 'b', 'a'] }
+{ 'ba', ['a', 'b'] }
+{ 'a', ['a'] }
+{ '', [] }
