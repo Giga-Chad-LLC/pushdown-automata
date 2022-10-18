@@ -18,6 +18,11 @@ This project is done as a formal languages course work for sophomore year at HSE
     ```bash
     (.venv)> pip install -r requirements.txt
     ```
+- Make sure that python version inside the virtual environment is at least `3.9.x` (if not, see how to [upgrade it](https://stackoverflow.com/questions/2170252/can-existing-virtualenv-be-upgraded-gracefully)):
+    ```bash
+    (.venv)> python --version
+    Python 3.9.6 # Python 3.9.x or above
+    ```
 
 ## How to use:
 - **Lexer**: `python ./lexer.py <path/to/file/with/grammar>` - saves lexing results into the file with same name but adding suffix `.out`.
