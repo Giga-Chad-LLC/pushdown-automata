@@ -58,7 +58,7 @@ def t_TERMINAL(token):
     return token
 
 
-lexer = lex.lex(debug=1)
+lexer = lex.lex()
 
 
 def main():
