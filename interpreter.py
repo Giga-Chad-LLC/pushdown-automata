@@ -99,8 +99,8 @@ class Interpreter:
                     ):
                         return True
         elif isinstance(a, Terminal):
-            if string[0] == a.value:
-                result = self._traverse(string[1:], stack, evaluation_trace)
+            if string[0:len(a.value)] == a.value:
+                result = self._traverse(string[len(a.value):], stack, evaluation_trace)
 
                 if result is False:
                     evaluation_trace.pop()

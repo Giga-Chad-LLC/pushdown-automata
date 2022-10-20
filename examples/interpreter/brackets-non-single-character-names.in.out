@@ -1,0 +1,33 @@
+Provided Grammar:
+-- Grammar --
+Terminals: ['lb', 'rb']
+Non-terminals: ['str']
+Start: 'str'
+Rules:
+'str' -> ['lb', 'str', 'rb'] | ['lb', 'str', 'rb', 'str'] | ['ε']
+
+
+Grammar in Greibah weak form:
+-- Grammar --
+Terminals: ['lb', 'rb']
+Non-terminals: ['str', "str'"]
+Start: 'str''
+Rules:
+'str' -> ['lb', 'rb'] | ['lb', 'str', 'rb'] | ['lb', 'rb'] | ['lb', 'str', 'rb'] | ['lb', 'rb', 'str'] | ['lb', 'str', 'rb', 'str']
+'str'' -> ['ε'] | ['lb', 'rb'] | ['lb', 'str', 'rb'] | ['lb', 'rb'] | ['lb', 'str', 'rb'] | ['lb', 'rb', 'str'] | ['lb', 'str', 'rb', 'str']
+
+
+-- Evaluation --
+Grammar contains 'lbrblblbrbrb': True
+
+Evaluation trace:
+{ 'lbrblblbrbrb', ['str''] }
+{ 'lbrblblbrbrb', ['str', 'rb', 'lb'] }
+{ 'rblblbrbrb', ['str', 'rb'] }
+{ 'lblbrbrb', ['str'] }
+{ 'lblbrbrb', ['rb', 'str', 'lb'] }
+{ 'lbrbrb', ['rb', 'str'] }
+{ 'lbrbrb', ['rb', 'rb', 'lb'] }
+{ 'rbrb', ['rb', 'rb'] }
+{ 'rb', ['rb'] }
+{ '', [] }
