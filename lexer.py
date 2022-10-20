@@ -21,7 +21,11 @@ def t_newline(token):
 
 
 def t_error(token):
-    print("Lexer: Illegal character '%s'" % token.value[0])
+    if token is None:
+        print("Lexer: Unexpected end of input")
+    else:
+        token_description = f"{token.type}({token.value}) at {token.lineno}:{token.lexpos}"
+        print(f"Lexer: Syntax error: Unexpected {token_description}", token)
     exit()
 
 
@@ -42,17 +46,19 @@ t_EMPTY = EMPTY_TOKEN_REGEX
 
 @TOKEN(NON_TERMINAL_TOKEN_REGEX)
 def t_NON_TERMINAL(token):
+    print(token.value)
     token.value = token.value[1:-1]
     return token
 
 
 @TOKEN(TERMINAL_TOKEN_REGEX)
 def t_TERMINAL(token):
+    print(token.value)
     token.value = token.value[1:-1]
     return token
 
 
-lexer = lex.lex()
+lexer = lex.lex(debug=1)
 
 
 def main():
